@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="j1bW2lP-fceqqFv9vMSToBpTP9S_6au3eBvgzC-LI20" />
+  <title>Smart Academy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: #2c3e7a;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 { font-size: 22px; }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 15px;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .hero {
+      background: #2c3e7a;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h2 { font-size: 32px; margin-bottom: 12px; }
+    .hero p { font-size: 16px; color: #ccc; margin-bottom: 25px; }
+
+    .hero a {
+      background: #f0a500;
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .hero a:hover { background: #d49000; }
+
+    .section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #2c3e7a;
+      border-bottom: 2px solid #2c3e7a;
+      padding-bottom: 8px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      width: calc(33% - 11px);
+      min-width: 200px;
+    }
+
+    .card h4 { font-size: 16px; margin-bottom: 8px; color: #2c3e7a; }
+    .card p { font-size: 14px; color: #666; line-height: 1.5; }
+
+    .about {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 25px;
+    }
+
+    .about p { font-size: 15px; line-height: 1.7; color: #555; }
+
+    .form-box {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 25px;
+      max-width: 480px;
+    }
+
+    .form-box h4 { font-size: 17px; color: #2c3e7a; margin-bottom: 5px; }
+    .form-box .sub { font-size: 13px; color: #888; margin-bottom: 18px; }
+
+    .form-box label { display: block; font-size: 13px; color: #555; margin-bottom: 5px; margin-top: 14px; }
+
+    .form-box input,
+    .form-box select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-box input:focus,
+    .form-box select:focus { border-color: #2c3e7a; }
+
+    .form-box button {
+      margin-top: 18px;
+      width: 100%;
+      background: #2c3e7a;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-box button:hover { background: #1f2e5e; }
+    .form-box button:disabled { background: #aaa; cursor: not-allowed; }
+
+    .success-msg {
+      display: none;
+      background: #e6f9ee;
+      border: 1px solid #a3d9b5;
+      color: #2e7d52;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .error-msg {
+      display: none;
+      background: #fdecea;
+      border: 1px solid #f5c6cb;
+      color: #b71c1c;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .contact {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 25px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 15px;
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row .icon { font-size: 20px; width: 30px; text-align: center; }
+
+    .contact-row a {
+      color: #2c3e7a;
+      text-decoration: none;
+    }
+
+    .contact-row a:hover { text-decoration: underline; }
+
+    footer {
+      background: #2c3e7a;
+      color: #aaa;
+      text-align: center;
+      padding: 18px;
+      font-size: 13px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Smart Academy</h1>
+  <nav>
+    <a href="#kurslar">Kurslar</a>
+    <a href="#haqida">Haqida</a>
+    <a href="#royxat">Ro'yxat</a>
+    <a href="#aloqa">Aloqa</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Smart Academy ga xush kelibsiz!</h2>
+  <p>Bilim olish uchun eng yaxshi joy</p>
+  <a href="#royxat">Ro'yxatdan o'tish ↓</a>
+</div>
+
+<div class="section" id="kurslar">
+  <h3>Bizning kurslar</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>🎨 Grafik Dizaynerlik</h4>
+      <p>Photoshop va Figma yordamida dizayn yaratishni o'rganing.</p>
+    </div>
+    <div class="card">
+      <h4>🧮 Mental Arifmetika</h4>
+      <p>Tez hisoblash va xotirani rivojlantirish kursi.</p>
+    </div>
+    <div class="card">
+      <h4>🇬🇧 Ingliz Tili</h4>
+      <p>Boshlang'ichdan IELTS gacha ingliz tilini o'rganing.</p>
+    </div>
+    <div class="card">
+      <h4>🇷🇺 Rus Tili</h4>
+      <p>Rus tilida gaplashish va yozishni o'rganing.</p>
+    </div>
+    <div class="card">
+      <h4>💻 IT Savodxonlik</h4>
+      <p>Kompyuter asoslari va MS Office dasturlari.</p>
+    </div>
+    <div class="card">
+      <h4>🌐 Web Dasturlash</h4>
+      <p>HTML, CSS va JavaScript bilan sayt yarating.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="haqida">
+  <h3>Biz haqimizda</h3>
+  <div class="about">
+    <p>
+      Smart Academy 2019-yildan beri ishlaydi. Bizda tajribali o'qituvchilar bor.
+      1000 dan ortiq o'quvchi bizda tahsil olgan. Kurs yakunida sertifikat beriladi.
+      Guruhlar kichik bo'lgani uchun har bir o'quvchiga e'tibor beriladi.
+    </p>
+  </div>
+</div>
+
+<div class="section" id="royxat">
+  <h3>Ro'yxatdan o'tish</h3>
+  <div class="form-box">
+    <h4>Anketa to'ldiring</h4>
+    <p class="sub">Ma'lumotlar to'g'ridan-to'g'ri bizga yuboriladi</p>
+
+    <label>Ism va familiya</label>
+    <input type="text" id="ism" placeholder="Masalan: Jasur Karimov">
+
+    <label>Telefon raqam</label>
+    <input type="tel" id="tel" placeholder="+998 90 000 00 00">
+
+    <label>Yosh</label>
+    <input type="number" id="yosh" placeholder="Masalan: 15" min="5" max="60">
+
+    <label>Qaysi kursga yozilmoqchisiz?</label>
+    <select id="kurs">
+      <option value="">— Kursni tanlang —</option>
+      <option>🎨 Grafik Dizaynerlik</option>
+      <option>🧮 Mental Arifmetika</option>
+      <option>🇬🇧 Ingliz Tili</option>
+      <option>🇷🇺 Rus Tili</option>
+      <option>💻 IT Savodxonlik</option>
+      <option>🌐 Web Dasturlash</option>
+    </select>
+
+    <button id="submitBtn" onclick="submitForm()">Yuborish</button>
+
+    <div class="success-msg" id="successMsg">
+      ✅ Muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.
+    </div>
+    <div class="error-msg" id="errorMsg">
+      ❌ Xatolik yuz berdi. Iltimos qayta urinib ko'ring.
+    </div>
+  </div>
+</div>
+
+<div class="section" id="aloqa">
+  <h3>Aloqa</h3>
+  <div class="contact">
+    <div class="contact-row">
+      <span class="icon">📞</span>
+      <span>Telefon: <a href="tel:">raqam yoq</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="icon">📍</span>
+      <span>Manzil: Smart Academy</span>
+    </div>
+    <div class="contact-row">
+      <span class="icon">📱</span>
+      <span>Telegram: <a href="https://t.me/qoqon_smart_academy_bot" target="_blank">@qoqon_smart_academy_bot</a></span>
+    </div>
+    <div class="contact-row">
+      <span class="icon">🕐</span>
+      <span>Ish vaqti: Dushanba — Shanba, 9:00 — 17:00</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Smart Academy. Barcha huquqlar himoyalangan.
+</footer>
+
+<script>
+  const BOT_TOKEN = '8477376613:AAGwxdpjT-Gm091fpHoJrz4Z3OnwSovRJN0';
+  const CHAT_ID   = '7038624148';
+
+  async function submitForm() {
+    const ism  = document.getElementById('ism').value.trim();
+    const tel  = document.getElementById('tel').value.trim();
+    const yosh = document.getElementById('yosh').value.trim();
+    const kurs = document.getElementById('kurs').value.trim();
+
+    if (!ism || !tel || !yosh || !kurs) {
+      alert("Iltimos, barcha maydonlarni to'ldiring.");
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Yuborilmoqda...';
+
+    document.getElementById('successMsg').style.display = 'none';
+    document.getElementById('errorMsg').style.display = 'none';
+
+    const xabar =
+      `📋 Yangi ariza!\n\n` +
+      `👤 Ism: ${ism}\n` +
+      `📞 Tel: ${tel}\n` +
+      `🎂 Yosh: ${yosh}\n` +
+      `📚 Kurs: ${kurs}`;
+
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: xabar })
+      });
+
+      const data = await res.json();
+
+      if (data.ok) {
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('ism').value  = '';
+        document.getElementById('tel').value  = '';
+        document.getElementById('yosh').value = '';
+        document.getElementById('kurs').value = '';
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+      }
+    } catch (e) {
+      document.getElementById('errorMsg').style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Yuborish';
+  }
+</script>
+
+</body>
+</html>
+Redmi Note 12 Pro
